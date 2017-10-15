@@ -1,0 +1,63 @@
+Exemplo consulta:
+
+<?xml version="1.0" encoding="utf-8" ?><request xmlns="https://www.w3schools.com"><nome_metodo>consulta</nome_metodo><parametro><![CDATA[<?xml version="1.0" encoding="utf-8" ?><cpf xmlns="https://www.w3schools.com">0000000000</cpf>]]></parametro></request>
+
+
+Exemplo boletim:
+
+
+<?xml version="1.0" encoding="utf-8" ?><request xmlns="https://www.w3schools.com"><nome_metodo>submeter</nome_metodo><parametro><![CDATA[<?xml version="1.0" encoding="utf-8" ?><boletim xmlns="https://www.w3schools.com"><informacao_pessoal><nome>flavio</nome><CPF>1234567890</CPF><matricula>1234567890</matricula><endereco>Rua Fulano da Silva</endereco><telefone>21123456789</telefone></informacao_pessoal><informacao_periodo><data>2017-02-16</data><cr_periodo>7</cr_periodo><materia><nome>comp I</nome><nota_final>9</nota_final><carga_horaria>40</carga_horaria><creditos>10</creditos><situacao_final>AP</situacao_final></materia><materia><nome>comp I</nome><nota_final>9</nota_final><carga_horaria>40</carga_horaria><creditos>10</creditos><situacao_final>AP</situacao_final></materia></informacao_periodo></boletim>]]></parametro></request>
+
+
+
+
+Exemplo consulta:
+
+<?xml version="1.0" encoding="utf-8" ?><cpf>0123456789</cpf>
+
+
+Exemplo xsl:
+
+<?xml version="1.0" encoding="utf-8" ?><request xmlns="https://www.w3schools.com"><nome_metodo>submeter</nome_metodo><parametro><![CDATA[<universidade unidade="tijuca">
+	<documento tipo = "boletim" emissao="2017-09-29" oficial="sim" autenticado_por="Pro-Reitoria de Graduacao">
+		<dados_pessoais>
+			<nome>Aluno Candidato</nome>
+			<cpf>000.000.000-00</cpf>
+			<registro_universitario>CC20170115</registro_universitario>
+			<notas_enem portugues="20" matematica="50" biologia="30" quimica="30" fisica="25" historia="10" geografia="10" />
+			<endereco tipo="residencial">
+				<tipo_logradouro>rua</tipo_logradouro>
+				<logradouro>Embaixador Francisco Alenpóvoa</logradouro>
+				<numero>30</numero>
+			</endereco>
+			<contatos>
+				<contato tipo="email" valor="candidato@gmail.com" />
+				<contato tipo="telefone residencial" valor="(21) 3333-3333" />
+				<contato tipo="telefone celular" valor="(21) 99999-9999" />
+			</contatos>
+		</dados_pessoais>
+		<periodos>
+			<periodo ano="2015" semestre="1" cr="6.8">
+				<aprovado codigo="MAB123" nome="Calculo Infinitesimal I" creditos="4.0" carga_horaria="60" nota="8.0" />
+				<aprovado codigo="MAB124" nome="Computacao I" creditos="6.0" carga_horaria="80" nota="7.0" />
+				<reprovado codigo="MAB125" nome="Algebra Computacional" creditos="4.0" carga_horaria="60" nota="3.0" />
+			</periodo>
+			<periodo ano="2015" semestre="2" cr="7">
+				<aprovado codigo="MAB223" nome="Calculo Infinitesimal II" creditos="4.0" carga_horaria="60" nota="9.0" />
+				<aprovado codigo="MAB224" nome="Computacao II" creditos="6.0" carga_horaria="80" nota="7.0" />
+				<aprovado codigo="MAB125" nome="Algebra Computacional" creditos="4.0" carga_horaria="60" nota="5.0" />
+				<abandono codigo="MAB226" nome="Arquitetura de Computadores" creditos="4.0" carga_horaria="60" nota="3.0" />
+			</periodo>
+			<periodo ano="2016" semestre="1" situacao="trancado" />
+			<periodo ano="2016" semestre="2" cr="6">
+				<aprovado codigo="MAB323" nome="Fisica I" creditos="4.0" carga_horaria="60" nota="6.0" />
+				<aprovado codigo="MAB324" nome="Compiladores" creditos="6.0" carga_horaria="80" nota="7.0" />
+				<aprovado codigo="MAB325" nome="Banco de Dados" creditos="4.0" carga_horaria="60" nota="5.0" />
+				<reprovado codigo="MAB326" nome="Arquitetura de Computadores" creditos="4.0" carga_horaria="60" nota="4.5" />
+			</periodo>
+		</periodos>
+	</documento>
+</universidade>]]></parametro></request>
+
+
+
