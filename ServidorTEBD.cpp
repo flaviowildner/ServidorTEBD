@@ -186,7 +186,6 @@ void requestValidation(Socket^ serverSocket) {
 
 void threadReceive(Object^ argsSocket) {
 	auto clientSocket = safe_cast<Socket^>(argsSocket);
-	array<Byte>^ receiveBuffer = gcnew array<Byte>(BUFFER_SIZE);
 
 	for (int n = 0;; n++) {
 		//Recebendo XML REQUEST
