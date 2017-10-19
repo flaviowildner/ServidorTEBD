@@ -12,3 +12,15 @@
 	O sistema da UFRRJ disponibilizará dois métodos para serem invocados. O primeiro será o “submeter” que receberá um boletim como parâmetro e retornará um número inteiro como resultado da inscrição, sendo 0(sucesso), 1(XML inválido), 2(XML mal-formado) e 3(Erro interno). O segundo será o “consultaStatus”, que receberá um CPF como parâmetro e retornará um número inteiro como resultado da consulta, sendo 0(candidato não encontrado), 1(Em processamento), 2(Candidato aprovado e selecionado), 3(Candidato aprovado e em espera) e 4(Candidato não aprovado).
 	O sistema precisa receber as invocações de métodos e os parâmetros respeitando um formato. Para isso será utilizado o XML Schema para validar os formatos, se necessário retornando erros especificados anteriormente.
 	Nos casos onde os boletins vierem em formatos diferentes do proposto, o sistema tentará aplicar uma transformação a fim de ficar no formato proposto, para isso será utilizado a tecnologia XSLT.
+	
+	
+- Como usar
+
+Requitos:
+
+.NET Framework 4.6.2
+Na mesma pasta do ServidorTEBD.exe deve existir uma pasta “arquivos” contendo os XSDs e XSLs.
+
+Executando:
+Executar “ServidorTEBD.exe”. Inserir porta e flag para opção de XSLT.
+
