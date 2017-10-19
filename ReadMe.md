@@ -1,6 +1,6 @@
 - Introdução
 
-Em alguns casos precisamos que sistemas desenvolvidos em linguagem e plataformas diferentes se comuniquem via internet para diversos fins como, integração, adaptação, reutilização e etc. Essa necessidade é mais frequente entre empresas que realizam algum tipo de parceria e necessitam trocar informações. Para resolver este problema, os sistemas irão se comunicar utilizando uma linguagem universal conhecida por eles, chamamos essa tecnologia de WebServices.
+	Em alguns casos precisamos que sistemas desenvolvidos em linguagem e plataformas diferentes se comuniquem via internet para diversos fins como, integração, adaptação, reutilização e etc. Essa necessidade é mais frequente entre empresas que realizam algum tipo de parceria e necessitam trocar informações. Para resolver este problema, os sistemas irão se comunicar utilizando uma linguagem universal conhecida por eles, chamamos essa tecnologia de WebServices.
 
 - Problema
 
