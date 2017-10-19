@@ -10,12 +10,6 @@ Exemplo boletim:
 
 
 
-
-Exemplo consulta:
-
-<?xml version="1.0" encoding="utf-8" ?><cpf>0123456789</cpf>
-
-
 Exemplo xsl:
 
 <?xml version="1.0" encoding="utf-8" ?><request xmlns="https://www.w3schools.com"><nome_metodo>submeter</nome_metodo><parametro><![CDATA[<universidade unidade="tijuca">

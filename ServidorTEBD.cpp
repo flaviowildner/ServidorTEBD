@@ -230,8 +230,18 @@ void threadReceive(Object^ argsSocket) {
 
 int main(array<String ^> ^args)
 {
-	FLAG_XSL = Int32::Parse(args[1]);
-	int port = Int32::Parse(args[0]);
+	int port;
+	if (args->Length == 2) {
+		port = Int32::Parse(args[0]);
+		FLAG_XSL = Int32::Parse(args[1]);
+	}
+	else {
+		Console::WriteLine("Sem parâmetros");
+		exit(1);
+	}
+		
+
+	
 
 
 	IPAddress^ ipAddress;
