@@ -39,7 +39,6 @@ static void ValidationEventHandlerOne(Object^ sender, ValidationEventArgs^ e)
 void boletimValidation(String^ boletimXML, Socket^ serverSocket) {
 	Console::WriteLine("\nBoletim recebido:\n" + boletimXML + "\n");
 
-
 	if (FLAG_XSL == 1) {
 
 		String^ stylesheet = "arquivos/boletim.xsl";
@@ -58,7 +57,7 @@ void boletimValidation(String^ boletimXML, Socket^ serverSocket) {
 		////
 
 		String^ out = writer->ToString();
-		Console::WriteLine(out);
+		Console::WriteLine("Transformado:\n\n" + out);
 
 
 
@@ -76,7 +75,7 @@ void boletimValidation(String^ boletimXML, Socket^ serverSocket) {
 
 		Console::Write("Boletim validado com sucesso\n");
 		String^ stringRetorno;
-		stringRetorno = "<?xml version='1.0' encoding='utf-8'?><response_boletim><status_submeter>" + "0" + "</status_submeter></response_boletim>";
+		stringRetorno = "<?xml version='1.0' encoding='utf-8'?><response_boletim xmlns='https://www.w3schools.com'><status_submeter>" + "0" + "</status_submeter></response_boletim>";
 		Console::WriteLine("Mensagem retornada:\n" + stringRetorno);
 		array<Byte>^ data = System::Text::Encoding::UTF8->GetBytes(stringRetorno);
 		serverSocket->Send(data);
@@ -95,12 +94,13 @@ void boletimValidation(String^ boletimXML, Socket^ serverSocket) {
 		document->Validate(eventHandler);
 		Console::Write("Boletim validado com sucesso\n");
 		String^ stringRetorno;
-		stringRetorno = "<?xml version='1.0' encoding='utf-8'?><response_boletim><status_submeter>" + "0" + "</status_submeter></response_boletim>";
+		
+		stringRetorno = "<?xml version='1.0' encoding='utf-8'?><response_boletim xmlns='https://www.w3schools.com'><status_submeter>" + "0" + "</status_submeter></response_boletim>";
 		Console::WriteLine("Mensagem retornada:\n" + stringRetorno);
+
 		array<Byte>^ data = System::Text::Encoding::UTF8->GetBytes(stringRetorno);
 		serverSocket->Send(data);
 	}
-
 }
 
 void consultaValidation(String^ consultaXML, Socket^ serverSocket) {
@@ -120,23 +120,23 @@ void consultaValidation(String^ consultaXML, Socket^ serverSocket) {
 
 	String^ tempCPF = document->ChildNodes[1]->ChildNodes[0]->InnerText;
 	String^ stringRetorno;
-	if (tempCPF == "0000000000") {
-		stringRetorno = "<?xml version = '1.0' encoding = 'utf-8' ?><response_consulta_status><status_consulta_status>" + "0" + "</status_consulta_status></response_consulta_status>\0";
+	if (tempCPF == "00000000000") {
+		stringRetorno = "<?xml version = '1.0' encoding = 'utf-8' ?><response_consulta_status xmlns='https://www.w3schools.com'><status_consulta_status>" + "0" + "</status_consulta_status></response_consulta_status>\0";
 	}
-	else if (tempCPF == "0000000001") {
-		stringRetorno = "<?xml version = '1.0' encoding = 'utf-8' ?><response_consulta_status><status_consulta_status>" + "1" + "</status_consulta_status></response_consulta_status>\0";
+	else if (tempCPF == "00000000001") {
+		stringRetorno = "<?xml version = '1.0' encoding = 'utf-8' ?><response_consulta_status xmlns='https://www.w3schools.com'><status_consulta_status>" + "1" + "</status_consulta_status></response_consulta_status>\0";
 	}
-	else if (tempCPF == "0000000002") {
-		stringRetorno = "<?xml version = '1.0' encoding = 'utf-8' ?><response_consulta_status><status_consulta_status>" + "2" + "</status_consulta_status></response_consulta_status>\0";
+	else if (tempCPF == "00000000002") {
+		stringRetorno = "<?xml version = '1.0' encoding = 'utf-8' ?><response_consulta_status xmlns='https://www.w3schools.com'><status_consulta_status>" + "2" + "</status_consulta_status></response_consulta_status>\0";
 	}
-	else if (tempCPF == "0000000003") {
-		stringRetorno = "<?xml version = '1.0' encoding = 'utf-8' ?><response_consulta_status><status_consulta_status>" + "3" + "</status_consulta_status></response_consulta_status>\0";
+	else if (tempCPF == "00000000003") {
+		stringRetorno = "<?xml version = '1.0' encoding = 'utf-8' ?><response_consulta_status xmlns='https://www.w3schools.com'><status_consulta_status>" + "3" + "</status_consulta_status></response_consulta_status>\0";
 	}
-	else if (tempCPF == "0000000004") {
-		stringRetorno = "<?xml version = '1.0' encoding = 'utf-8' ?><response_consulta_status><status_consulta_status>" + "4" + "</status_consulta_status></response_consulta_status>\0";
+	else if (tempCPF == "00000000004") {
+		stringRetorno = "<?xml version = '1.0' encoding = 'utf-8' ?><response_consulta_status xmlns='https://www.w3schools.com'><status_consulta_status>" + "4" + "</status_consulta_status></response_consulta_status>\0";
 	}
 	else {
-		stringRetorno = "<?xml version = '1.0' encoding = 'utf-8' ?><response_consulta_status><status_consulta_status>" + "Erro interno" + "</status_consulta_status></response_consulta_status>\0";
+		stringRetorno = "<?xml version = '1.0' encoding = 'utf-8' ?><response_consulta_status xmlns='https://www.w3schools.com'><status_consulta_status>" + "Erro interno" + "</status_consulta_status></response_consulta_status>\0";
 	}
 	Console::WriteLine("Mensagem retornada:\n" + stringRetorno);
 	array<Byte>^ data = System::Text::Encoding::UTF8->GetBytes(stringRetorno);
@@ -147,6 +147,8 @@ void requestValidation(Socket^ serverSocket) {
 	array<Byte>^ receiveBuffer = gcnew array<Byte>(BUFFER_SIZE);
 	StringBuilder^ stringReceive = gcnew StringBuilder();
 	int rc;
+
+
 
 	do
 	{
@@ -229,19 +231,10 @@ void threadReceive(Object^ argsSocket) {
 
 int main(array<String ^> ^args)
 {
-	int port;
-	if (args->Length == 2) {
-		port = Int32::Parse(args[0]);
-		FLAG_XSL = Int32::Parse(args[1]);
-	}
-	else {
-		Console::WriteLine("Sem parâmetros");
-		exit(1);
-	}
-		
-
-	
-
+	Console::WriteLine("Digite a porta: ");
+	int port = Convert::ToInt32(Console::ReadLine());
+	Console::WriteLine("Habilitar XSL: ");
+	FLAG_XSL = Convert::ToInt32(Console::ReadLine());
 
 	IPAddress^ ipAddress;
 

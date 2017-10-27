@@ -4,6 +4,7 @@
             <xs:sequence>
                 <xs:element name="nome_metodo" type="xs:string"/>
                 <xs:element name="parametro" type="xs:string"/>
+              	<xs:element name="tipo_retorno" type="xs:string"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>

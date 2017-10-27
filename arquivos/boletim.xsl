@@ -1,29 +1,29 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="ISO-8859-1"?>
 <xsl:stylesheet version="1.0"
 xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-<xsl:template match="/universidade/documento">
+<xsl:template match="/">
 <boletim xmlns="https://www.w3schools.com">
   <informacao_pessoal>
     <nome>
-      <xsl:value-of select="dados_pessoais/nome"/>
+      <xsl:value-of select="universidade/documento/dados_pessoais/nome"/>
     </nome>
     <CPF>
-    	<xsl:value-of select="dados_pessoais/cpf"/>
+    	<xsl:value-of select="universidade/documento/dados_pessoais/cpf"/>
     </CPF>
     <matricula>
-      <xsl:value-of select="substring(dados_pessoais/registro_universitario,3)"/>
+      <xsl:value-of select="substring(universidade/documento/dados_pessoais/registro_universitario,3)"/>
     </matricula>
     <endereco>
-    	<xsl:value-of select="dados_pessoais/endereco/tipo_logradouro"/><xsl:text> </xsl:text><xsl:value-of select="dados_pessoais/endereco/logradouro"/><xsl:text> </xsl:text><xsl:value-of select="dados_pessoais/endereco/numero"/>
+    	<xsl:value-of select="universidade/documento/dados_pessoais/endereco/tipo_logradouro"/><xsl:text> </xsl:text><xsl:value-of select="universidade/documento/dados_pessoais/endereco/logradouro"/><xsl:text> </xsl:text><xsl:value-of select="universidade/documento/dados_pessoais/endereco/numero"/>
     </endereco>
     <telefone>
-      <xsl:if test="dados_pessoais/contatos/contato/@tipo='telefone residencial'">
-        <xsl:value-of select="dados_pessoais/contatos/contato[@tipo='telefone residencial']/@valor" />
+      <xsl:if test="universidade/documento/dados_pessoais/contatos/contato/@tipo='telefone residencial'">
+        <xsl:value-of select="universidade/documento/dados_pessoais/contatos/contato[@tipo='telefone residencial']/@valor" />
       </xsl:if>
     </telefone>
   </informacao_pessoal>
   
-	<xsl:for-each select="periodos/periodo">
+	<xsl:for-each select="universidade/documento/periodos/periodo">
     <xsl:if test="not(@situacao='trancado')">
     <informacao_periodo>
         <data>
