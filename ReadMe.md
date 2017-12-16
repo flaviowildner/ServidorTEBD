@@ -26,5 +26,7 @@ Executar “ServidorTEBD.exe”. Inserir porta e flag para opção de XSLT.
 
 Autores:
 Flávio Alves Wildner Real Rosa
+
 Gabriel Delgado Quintanilha da Silva
+
 Andrei Paes Figueiredo
